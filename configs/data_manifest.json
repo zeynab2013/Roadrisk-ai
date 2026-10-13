@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "dataset_name": "Road Safety Open Data",
+  "publisher": "Department for Transport",
+  "catalogue_url": "https://www.gov.uk/government/statistical-data-sets/road-safety-open-data",
+  "licence_name": "Open Government Licence v3.0",
+  "licence_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+  "attribution": "Contains public sector information licensed under the Open Government Licence v3.0.",
+  "publication_note": "Catalogue page last updated 30 July 2026, when final figures for 2025 were added. The codebook workbook on that page is the 2025 open-dataset data guide.",
+  "retrieved_on": "2026-10-09",
+  "files": [
+    {
+      "id": "collisions-last-5-years",
+      "role": "collisions",
+      "filename": "dft-road-casualty-statistics-collision-last-5-years.csv",
+      "url": "https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-collision-last-5-years.csv",
+      "directory": "raw",
+      "sha256": "06a03c0e5504175e23ed98e3e0b4767ac61d396c073405a1bddab9339c18f948",
+      "bytes": 97669586,
+      "required": true,
+      "notes": "Selected collision table. Measured on 2026-10-09: 44 columns, 513801 data rows, collision_year 2021 through 2025, no repeated collision_index."
+    },
+    {
+      "id": "open-dataset-data-guide-2025",
+      "role": "codebook",
+      "filename": "dft-road-casualty-statistics-road-safety-open-dataset-data-guide-2025.xlsx",
+      "url": "https://assets.publishing.service.gov.uk/media/6ab2a71d997a4b2950cced58/dft-road-casualty-statistics-road-safety-open-dataset-data-guide-2025.xlsx",
+      "directory": "external",
+      "sha256": "51b08606ef3dad1ae5d4c8726241b022fc8e4bbdc910ef0e5cc2fb92b054fc12",
+      "bytes": 85112,
+      "required": true,
+      "notes": "Official codebook. The code-list worksheet is named 2024_code_list."
+    }
+  ]
+}

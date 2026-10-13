@@ -1,0 +1,33 @@
+{
+  "note": "These SHA-256 values identify the existing frozen artifacts. They are not artifacts recreated through retraining. present_and_verified records the working tree checked when this file was written. The verifier recomputes each hash and does not trust that field.",
+  "artifacts": [
+    {
+      "path": "data/models/phase6-v1/frozen-config.json",
+      "sha256": "18a0287a9f3ee98dcd285a539c3a6581a1c33839427f9a4a36255bfb5bfbc082",
+      "required": true,
+      "purpose": "Phase 6 decision snapshot. load_frozen_model and open_session require it before scoring.",
+      "present_and_verified": true
+    },
+    {
+      "path": "data/models/phase6-v1/selected-pipeline.joblib",
+      "sha256": "43143b15178c5dc2dbe5c79ed6e12e1217d5ba6cefab737f5f7ac24f508bb478",
+      "required": true,
+      "purpose": "Frozen sigmoid-calibrated pipeline. load_frozen_model checks this hash and then loads the file. The verifier hashes the bytes and does not load it.",
+      "present_and_verified": true
+    },
+    {
+      "path": "data/models/phase7-v1/risk-bands.json",
+      "sha256": "692aa0624a50dcc7613afafc1e53269f587b93f45d64ad9653b230833eb10846",
+      "required": true,
+      "purpose": "Stored LOW, MEDIUM, and HIGH cuts. open_session requires this file and checks that binary_threshold is the frozen 0.15.",
+      "present_and_verified": true
+    },
+    {
+      "path": "data/models/phase7-v1/group-summary.json",
+      "sha256": "41b078e73eecad94157b5ca790d018cd54421e9998c19af009c8ace5d1f97e4e",
+      "required": false,
+      "purpose": "Saved Phase 7 urban/rural summary. Scoring and GET /health do not read it. GET /area-summaries returns 503 when this sibling of risk-bands.json is missing.",
+      "present_and_verified": true
+    }
+  ]
+}

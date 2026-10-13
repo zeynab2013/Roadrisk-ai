@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+
+@theme {
+  --font-sans: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --color-navy: #0b1f3a;
+  --color-navy-dark: #071629;
+  --color-canvas: #f5f7fa;
+  --color-line: #e2e8f0;
+  --color-muted: #64748b;
+  --radius-card: 0.75rem;
+}
+
+html {
+  background: var(--color-canvas);
+  color: var(--color-navy);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+}
+
+#root {
+  min-height: 100vh;
+}

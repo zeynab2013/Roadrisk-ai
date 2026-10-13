@@ -1,0 +1,40 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      ROADRISK_PHASE6_DIR: /models/phase6-v1
+      ROADRISK_BANDS_PATH: /models/phase7-v1/risk-bands.json
+      ROADRISK_DATABASE_URL: sqlite:////var/lib/roadrisk/roadrisk.sqlite3
+      ROADRISK_CORS_ORIGINS: http://127.0.0.1:8080,http://localhost:8080,http://127.0.0.1:5173,http://localhost:5173
+    volumes:
+      - roadrisk-history:/var/lib/roadrisk
+      - ${ROADRISK_MODELS_DIR:-./data/models}:/models:ro
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - import json, urllib.request; body = json.load(urllib.request.urlopen("http://127.0.0.1:8000/health", timeout=3)); raise SystemExit(0 if body.get("ready") is True else 1)
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  web:
+    build:
+      context: apps/web
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      ROADRISK_PUBLIC_API_BASE_URL: /api
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  roadrisk-history:
